@@ -58,6 +58,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   searchListShowing(query) async {
+    categoryList = await ApiRepository().fetchCartList();
     for (int i = 0; i < categoryList!.entries!.length; i++) {
       if (categoryList!.entries![i].api!.contains(query)) {
         searchList?.entries?.clear();
@@ -89,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
                 controller: searchController,
                 decoration: buildTextFieldInputDecoration(),
                 onChanged: (change) async {
-                  if (change.length > 4) {
+                  if (change.length > 3) {
                     searchListShowing(change);
                   } else {
                     categoryList = await ApiRepository().fetchCartList();
