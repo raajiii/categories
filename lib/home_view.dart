@@ -25,11 +25,14 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     Future(() async {
       listAdd();
-      await Future.delayed(const Duration(milliseconds: 1));
+       await Future.delayed(const Duration(milliseconds: 1));
       categoryList = await ApiRepository().fetchCartList();
       searchList = categoryList;
       await Future.delayed(const Duration(milliseconds: 2));
+      listAdd();
       localListRemove();
+      print("localList    $localList");
+
       setState(() {});
     });
   }
@@ -55,7 +58,6 @@ class _HomeViewState extends State<HomeView> {
   }
 
   searchListShowing(query) async {
-    categoryList = await ApiRepository().fetchCartList();
     for (int i = 0; i < categoryList!.entries!.length; i++) {
       if (categoryList!.entries![i].api!.contains(query)) {
         searchList?.entries?.clear();
