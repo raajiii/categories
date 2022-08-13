@@ -90,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
                 controller: searchController,
                 decoration: buildTextFieldInputDecoration(),
                 onChanged: (change) async {
-                  if (change.length > 3) {
+                  if (change.length > 1) {
                     searchListShowing(change);
                   } else {
                     categoryList = await ApiRepository().fetchCartList();
