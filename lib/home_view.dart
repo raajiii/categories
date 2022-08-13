@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
   TextEditingController searchController = TextEditingController();
   final box = GetStorage();
   List<dynamic> localList = [];
-  List<String> myList = [];
+  List<dynamic> myList = [];
   @override
   void initState() {
     super.initState();
@@ -196,7 +196,10 @@ class _HomeViewState extends State<HomeView> {
                 child: const Text("No")),
             TextButton(
                 onPressed: () {
-                  myList.addAll(box.read("categoryList"));
+                   listAdd();
+                   if(localList.isNotEmpty){
+                     myList = localList;
+                   }
                   myList.add(searchList?.entries?[index].api ?? " ");
                   box.write("categoryList", myList);
                   searchList?.entries?.removeAt(index);
