@@ -59,9 +59,10 @@ class _HomeViewState extends State<HomeView> {
 
   searchListShowing(query) async {
     categoryList = await ApiRepository().fetchCartList();
+    searchList?.entries?.clear();
     for (int i = 0; i < categoryList!.entries!.length; i++) {
       if (categoryList!.entries![i].api!.contains(query)) {
-        searchList?.entries?.clear();
+
         searchList?.entries?.add(categoryList!.entries![i]);
         setState(() {});
       }
