@@ -92,6 +92,8 @@ class _HomeViewState extends State<HomeView> {
                   } else {
                     categoryList = await ApiRepository().fetchCartList();
                     searchList = categoryList;
+                    listAdd();
+                    localListRemove();
                     setState(() {});
                   }
                 },
