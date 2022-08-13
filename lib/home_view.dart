@@ -196,6 +196,7 @@ class _HomeViewState extends State<HomeView> {
                 child: const Text("No")),
             TextButton(
                 onPressed: () {
+                  myList.addAll(box.read("categoryList"));
                   myList.add(searchList?.entries?[index].api ?? " ");
                   box.write("categoryList", myList);
                   searchList?.entries?.removeAt(index);
